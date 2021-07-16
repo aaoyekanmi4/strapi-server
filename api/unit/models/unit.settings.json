@@ -24,7 +24,7 @@
       "type": "string"
     },
     "level_id": {
-      "type": "integer"
+      "model": "level"
     }
   }
 }

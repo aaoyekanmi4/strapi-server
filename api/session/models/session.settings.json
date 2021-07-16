@@ -15,6 +15,13 @@
     "session_name": {
       "type": "string"
     },
+    "unit": {
+      "model": "unit"
+    },
+    "activities": {
+      "via": "session",
+      "collection": "activity"
+    },
     "unit_id": {
       "type": "integer"
     }

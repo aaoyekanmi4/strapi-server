@@ -33,14 +33,6 @@
     "guide": {
       "model": "guide"
     },
-    "session": {
-      "via": "activities",
-      "model": "session"
-    },
-    "resources": {
-      "via": "activity",
-      "collection": "resource"
-    },
     "session_id": {
       "type": "integer"
     }

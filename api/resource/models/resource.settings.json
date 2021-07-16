@@ -30,10 +30,6 @@
     "link": {
       "type": "string"
     },
-    "activity": {
-      "via": "resources",
-      "model": "activity"
-    },
     "activity_id": {
       "type": "integer"
     }

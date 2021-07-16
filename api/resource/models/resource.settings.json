@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resources",
+  "info": {
+    "name": "resource",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resource_name": {
+      "type": "string"
+    },
+    "resource_type": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "resource_details": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "activity": {
+      "via": "resources",
+      "model": "activity"
+    },
+    "activity_id": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "name": "activity",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "activity_name": {
+      "type": "string"
+    },
+    "start_instruction": {
+      "type": "text"
+    },
+    "end_instruction": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "resource": {
+      "model": "resource"
+    },
+    "guide": {
+      "model": "guide"
+    },
+    "session": {
+      "via": "activities",
+      "model": "session"
+    },
+    "resources": {
+      "via": "activity",
+      "collection": "resource"
+    },
+    "session_id": {
+      "type": "integer"
+    }
+  }
+}

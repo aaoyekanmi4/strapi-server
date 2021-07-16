@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sessions",
+  "info": {
+    "name": "session",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "session_name": {
+      "type": "string"
+    },
+    "unit": {
+      "model": "unit"
+    },
+    "activities": {
+      "via": "session",
+      "collection": "activity"
+    },
+    "unit_id": {
+      "type": "integer"
+    }
+  }
+}

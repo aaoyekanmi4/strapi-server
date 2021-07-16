@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "units",
+  "info": {
+    "name": "Unit"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "unit_name": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "level_id": {
+      "model": "level"
+    }
+  }
+}

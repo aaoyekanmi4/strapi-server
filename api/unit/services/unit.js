@@ -5,4 +5,15 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+  async find() {
+    const rawBuilder = strapi.connections.default.raw(`
+    SELECT u.*,
+      (SELECT COUNT(*) AS session_count FROM sessions WHERE u.id = sessions.unit_id) 
+    FROM units u
+    ORDER BY unit_name;
+    `);
+    const resp = await rawBuilder.then();
+    return resp.rows;
+  },
+};

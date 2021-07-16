@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  async find(ctx) {
+  async findByUnit(params) {
     const rawBuilder = strapi.connections.default.raw(`SELECT DISTINCT s.id,
      s.*,
       ARRAY((
@@ -34,14 +34,16 @@ module.exports = {
                 )
               )
         FROM activities a
-        JOIN resources r ON r.activity_id = a.id
-        JOIN guides g ON g.activity_id = a.id
+        LEFT JOIN resources r ON r.activity_id = a.id
+        LEFT JOIN guides g ON g.activity_id = a.id
         WHERE a.session_id = s.id
+        ORDER BY a.order
        )) AS session_activities
- FROM sessions s
- JOIN activities a ON a.session_id = s.id
- WHERE s.unit_id =1
- ORDER BY s.session_name;`);
+      FROM sessions s
+      JOIN activities a ON a.session_id = s.id
+      WHERE s.unit_id =${params}
+      ORDER BY s.session_name;`
+    );
     const resp = await rawBuilder.then();
     return resp.rows;
   },

@@ -40,6 +40,14 @@
         "policies": []
       }
     },
+     {
+      "method": "GET",
+      "path": "/units/:id/sessions",
+      "handler": "session.findByUnit",
+      "config": {
+        "policies": []
+      }
+    },
     {
       "method": "DELETE",
       "path": "/sessions/:id",

@@ -6,8 +6,4 @@
  */
 
 
-module.exports = {
-  /**
-   * strapi.default.connections.raw(select * from sessions, )
-   */
-};
+module.exports = {};

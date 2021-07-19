@@ -7,42 +7,15 @@
 
 module.exports = {
   async findByUnit(params) {
-    const rawBuilder = strapi.connections.default.raw(`SELECT DISTINCT s.id,
-     s.*,
-      ARRAY((
-         SELECT
-             jsonb_build_object(
-               'id', a.id,
-               'activity_name', a.activity_name,
-               'start_instruction', a.start_instruction,
-               'end_instruction', a.end_instruction,
-               'duration', a.duration,
-                'guide', jsonb_build_object(
-                  'guide_id', g.id,
-                  'name', g.name,
-                  'content', g.content,
-                  'description',g.description
-                ),
-                'resource', jsonb_build_object(
-                  'resource_id', r.id,
-                  'resource_name', r.resource_name,
-                  'link', r.link,
-                  'img', r.img,
-                  'resource_type', r.resource_type,
-                  'description', r.description, 
-                  'resource_details', r.resource_details
-                )
-              )
-        FROM activities a
-        LEFT JOIN resources r ON r.activity_id = a.id
-        LEFT JOIN guides g ON g.activity_id = a.id
-        WHERE a.session_id = s.id
-        ORDER BY a.order
-       )) AS session_activities
-      FROM sessions s
-      JOIN activities a ON a.session_id = s.id
-      WHERE s.unit_id =${params}
-      ORDER BY s.session_name;`
+    const rawBuilder = strapi.connections.default.raw(`
+    SELECT
+      session_name,
+      unit_id,
+      activities AS session_activities
+    FROM sessions
+    JOIN activities ON activities.session_id = sessions.id
+    WHERE sessions.unit_id =${params}
+    ORDER BY sessions.session_name;`
     );
     const resp = await rawBuilder.then();
     return resp.rows;

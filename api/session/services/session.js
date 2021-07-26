@@ -36,7 +36,7 @@ module.exports = {
         FROM activities a
         LEFT JOIN resources r ON r.activity_id = a.id
         LEFT JOIN guides g ON g.activity_id = a.id
-        WHERE a.session_id = s.id
+        WHERE a.session_id = s.id 
         ORDER BY a.order
        )) AS session_activities
       FROM sessions s

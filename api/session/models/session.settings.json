@@ -20,6 +20,9 @@
     },
     "unit_id": {
       "type": "integer"
+    },
+    "session_objective": {
+      "type": "text"
     }
   }
 }
